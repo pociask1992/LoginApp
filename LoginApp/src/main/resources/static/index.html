@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="UTF-8">
+
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="js/angular-1.5.7.js"></script>
+
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+
+<script type="text/javascript"
+	src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="js/app.js"></script>
+<script src="js/controller/loginController.js"></script>
+
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body ng-app="theLogin" ng-controller="loginController">
+
+	<div class="container-fluid">
+		<div class="row content">
+			<div class="col-sm-3 sidenav">
+				<h4>Login Application</h4>
+				<ul class="nav nav-pills nav-stacked">
+					<li class="active"><a href="#section1">User Show</a></li>
+	<!-- 				<li><a href="#section2">Delete User</a></li>
+					<li><a href="#section3">Family</a></li>
+					<li><a href="#section3">Photos</a></li> -->
+				</ul>
+				<br>
+<!-- 				<div class="input-group">
+					<input type="text" class="form-control" placeholder="Search Blog..">
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>
+					</span>
+				</div> -->
+			</div>
+
+			<div class="col-md-9">
+				<h2>
+					<small><center>User Settings</center></small>
+				</h2>
+				<hr>
+
+				<div class="container">
+					<h2>Login Table</h2>
+					<p>Table contains users and thier logins.</p>
+					<table class="table">
+						<thead>
+							<tr>
+								<th></th>
+								<th>LOGIN</th>
+								<th>PASSWORD</th>
+								<th>NAME</th>
+								<th>SURNAME</th>
+								<th>EMAIL</th>
+							</tr>
+						</thead>
+						<tbody ng-repeat="login in logins">
+							<tr>
+								<td><label> <input type="radio"
+										name="radioButton{{$index}}" ng-model="changeValueChB.value"
+										value="{{$index}}"
+										ng-click="updateLogin(logins[changeValueChB.value].name,
+															  logins[changeValueChB.value].surname,
+															  logins[changeValueChB.value].login,
+															  logins[changeValueChB.value].password,
+															  logins[changeValueChB.value].email,
+															  logins[changeValueChB.value].login_id)">
+								</label><br /></td>
+								<td>{{login.login}}</td>
+								<td>{{login.password}}</td>
+								<td>{{login.name}}</td>
+								<td>{{login.surname}}</td>
+								<td>{{login.email}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div>
+					<div name="rowLogin">
+						<div class="col-md-6">
+							<center>Login:</center>
+						</div>
+						<div class="col-md-6">
+							<center>
+								<input name="inputLogin"
+									value="{{logins[changeValueChB.value].login}}"
+									ng-model="changeLogin.login"></input>
+							</center>
+						</div>
+					</div>
+					<br>
+					<div name="rowPassword">
+						<div class="col-md-6">
+							<center>Password:</center>
+						</div>
+						<div class="col-md-6">
+							<center>
+								<input name="inputPassword"
+									value="{{logins[changeValueChB.value].password}}"
+									ng-model="changeLogin.password"></input>
+							</center>
+						</div>
+					</div>
+					<br>
+					<div name="rowName">
+						<div class="col-md-6">
+							<center>Name:</center>
+						</div>
+						<div class="col-md-6">
+							<center>
+								<input name="inputName"
+									value="{{logins[changeValueChB.value].name}}"
+									ng-model="changeLogin.name"></input>
+							</center>
+						</div>
+					</div>
+					<br>
+					<div name="rowSurname">
+						<div class="col-md-6">
+							<center>Surname:</center>
+						</div>
+						<div class="col-md-6">
+							<center>
+								<input name="inputSurname"
+									value="{{logins[changeValueChB.value].surname}}"
+									ng-model="changeLogin.surname"></input>
+							</center>
+						</div>
+					</div>
+					<br>
+					<div name="rowEmail">
+						<div class="col-md-6">
+							<center>Email:</center>
+						</div>
+						<div class="col-md -6">
+							<center>
+								<input name="inputEmail"
+									value="{{logins[changeValueChB.value].email}}"
+									ng-model="changeLogin.email"></input>
+							</center>
+						</div>
+					</div>
+					<div name="buttonAddDiv">
+						<div class="col-md-6"></div>
+						<div class="col-md-6">
+							<button ng-click="addLoginFunction()" name="buttonAdd">Add</button>
+						</div>
+					</div>
+					<div name="buttonUpdateRow">
+						<div class="col-md-6"></div>
+						<div class="col-md-6">
+							<button ng-click="updateLoginFunction()" name="buttonUpdate">Update</button>
+						</div>
+					</div>
+					<div ng-hide="changeValueChB.value == ''">
+						<div class="col-md-6"></div>
+						<div class="col-md-6">
+							<button ng-click="deleteLoginFunction(logins[changeValueChB.value].login_id)" name="buttonDelete">Delete</button>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+</body>
+<footer class="container-fluid">
+	<p>Footer Text</p>
+</footer>

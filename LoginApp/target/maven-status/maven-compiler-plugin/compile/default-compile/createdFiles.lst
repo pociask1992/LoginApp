@@ -1,0 +1,12 @@
+com\example\controller\LoginController.class
+com\example\configuration\ApplicationConfig.class
+com\example\configuration\PersistenceConfiguration.class
+com\example\configuration\RepositoryConfiguration.class
+com\example\configuration\CustomRestMvcConfiguration$1.class
+com\example\repository\LoginRepository.class
+com\example\configuration\PersistenceConfiguration$1.class
+com\example\App.class
+com\example\requestwrapper\LoginWrapper.class
+com\example\configuration\CustomRestMvcConfiguration.class
+com\example\domain\Login.class
+com\example\service\LoginService.class
